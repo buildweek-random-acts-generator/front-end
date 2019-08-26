@@ -23,6 +23,7 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
           <Field type="password" name="passwordConfirm" placeholder="******" />
           {touched.passwordConfirm && errors.passwordConfirm && <p className="error">{errors.passwordConfirm}</p>}
           </Form>
+          </div>
     );
   };
   
@@ -43,7 +44,7 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
     }),
   
     handleSubmit(values, { setStatus }) {
-      axios
+      axiosWithAuth()
         .post('https://reqres.in/api/users/', values)
         .then(response => {
             console.log("response success", response)

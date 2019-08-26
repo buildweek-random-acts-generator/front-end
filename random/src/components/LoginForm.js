@@ -6,9 +6,9 @@ import {
     Field
 } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 
-export default function LoginForm({
+
+function LoginForm({
     errors,
     touched,
     status,
@@ -19,7 +19,7 @@ export default function LoginForm({
     <div className = "container" >
         <div className = "form-cover" >
 
-        <From className = "form" >
+        <Form className = "form" >
         <h2 className = "loginTitle" > Sign In </h2> 
         <label > Email </label> 
          {touched.username && errors.username && <p> {errors.username} </p>}
@@ -36,7 +36,7 @@ export default function LoginForm({
         placeholder = "Enter your password" />
         <button className = "btnSignIn" > Login </button> 
         <p> Not a member yet? <a href="#"> Sign Up </a></p >
-        </From> 
+        </Form> 
         </div> 
         </div>
     )
