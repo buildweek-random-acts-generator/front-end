@@ -1,5 +1,5 @@
 # Front-end
--test
+-test test2 EK
 # Proposal
 
  What problem does your app solve?
@@ -13,7 +13,7 @@ Our mission is to connect people one random act of kindness at a time. We strive
 
 
 
-# Features
+# Features 
 
  What features are required for your minimum viable product?
 - Navigation on all pages
@@ -39,6 +39,7 @@ Our mission is to connect people one random act of kindness at a time. We strive
 - Frontend: React
 - Backend: Node.js
 - Formik
+- Semantic-ui
  
 Do APIs require you to contact its maintainer to gain access?
 - No
