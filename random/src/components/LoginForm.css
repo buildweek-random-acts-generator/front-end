@@ -1,5 +1,5 @@
 .form {
-       display: block;
+        display: block;
         padding: 96px;
 }
 
@@ -13,22 +13,23 @@
         border-radius: 4px;
         margin-top: 100px;
 }
+
 .input {
         outline: none;
         display: block;
-         width: 100%;
+        width: 100%;
         border: 1px solid #d9d9d9;
         margin: 0 0 20px;
         padding: 10px 15px;
         box-sizing: border-box;
-        font-wieght: 400;
+        font-weight: 400;
         -webkit-transition: 0.3s ease;
         transition: 0.3s ease;
         border-radius: 5px;
 }
 
 .loginTitle {
-    text-align: center;
+        text-align: center;
 }
 
 .btnSignIn {
@@ -43,10 +44,10 @@
 }
 
 a {
-text-decoration: none;
-color: rgb(108, 41, 223), 45, 200);
+        text-decoration: none;
+        color: rgb(108, 41, 223);
 }
 
 .container {
-    background: #C3A9EF;
+        background: #C3A9EF;
 }
