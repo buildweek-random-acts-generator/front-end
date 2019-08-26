@@ -1,4 +1,4 @@
-import React from 'react';
+nimport React from 'react';
 import "./LoginForm.css";
 import {
     withFormik,
@@ -33,7 +33,7 @@ export default function LoginForm({
         <Field type = "password"
         name = "password"
         className = "input"
-        placeholder = "Enter your password" / >
+        placeholder = "Enter your password" />
         <button className = "btnSignIn" > Login </button> 
         <p> Not a member yet? <a href="#"> Sign Up </a></p >
         </From> 
