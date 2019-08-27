@@ -1,6 +1,12 @@
 .tab {
+  display:flex;
+  align-items: center;
   background: #c3a9ee;
   padding: 1.5em;
+}
+
+.nav-right {
+  
 }
 
 .tab a {
@@ -10,4 +16,9 @@
 .tab a:hover {
   color: black;
   text-decoration: underline;
+}
+
+.header {
+  background: #c3a9ee;
+  /* padding: 1.5em; */
 }

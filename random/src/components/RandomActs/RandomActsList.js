@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import './Random.css';
 import RandomActsCard from './RandomActsCard';
 import RandomActsEdit from "./RandomActsEdit"
 
@@ -18,7 +18,7 @@ const RandomActsList = props => {
   }, []);
 
   return (
-    <div>
+    <div className='random-cards'>
       {acts.length ? (
         acts.map(randomActs => {
         return <RandomActsCard ark={randomActs} />;
@@ -28,6 +28,8 @@ const RandomActsList = props => {
       )}
       <div>
           <RandomActsEdit acts={acts} updateActs={setActs} />
+         
+
       </div> 
     </div>
   )
