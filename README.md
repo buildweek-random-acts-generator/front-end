@@ -17,18 +17,16 @@ This documentation will cover all of the data models and endpoints which can be 
 
 ## Authentication
 
-| Request Type | Endpoint      | Description   |
-|:------------:|:-------------:|:-------------:|
+| Request Type | Endpoint       | Description   |
+|:------------:|:--------------:|:-------------:|
 | POST         | /auth/register | Creates User  |
 | POST         | /auth/login    | Creates JWT*  |
 
 * JSON Web Tokens Used to Verify Users
 
-## Authentication
-
 ### Register
 
-* A __POST__ request to the `/auth/register` endpoint expects to recieve an object as follows: 
+* A __POST__ request to the `/register` endpoint expects to recieve an object as follows: 
 
 ```javascript
 {
@@ -44,16 +42,12 @@ This documentation will cover all of the data models and endpoints which can be 
 
 ### Login
 
-* A __POST__ request to the `/auth/login` endpoint expects to recieve an object as follows: 
+* A __POST__ request to the `/login` endpoint expects to recieve an object as follows: 
 
 ```javascript
 {
     "email": "email",
     "password": "password",
-}
-{
-	"email":"testing@test.com",
-	"password":"testpassword"
 }
 ```
 
@@ -62,7 +56,31 @@ This documentation will cover all of the data models and endpoints which can be 
 | email        | String    |  true      | true       |
 | password     | String    |  true      | false      |
 
-* The __POST__ request to `/auth/login` will return a jwt and a login message.
+* The __POST__ request to `/login` will return a jwt and a login message.
+
+## Arks
+
+| Request Type | Endpoint | Description |
+|:------------:|:--------:|:-----------:|
+| GET          | /arks/   | Gets ARKS|
+| POST         | /arks/   | Posts a ARK|
+| PUT          | /arks/:id| Updates ARKS by ID|
+| DELETE       | /arks/:id| Deletes ARKS by ID|
+
+### Ark Request
+* A __POST__ request to the `/arks/` endpoint expects to receive an object as follows: 
+
+```javascript
+{
+    "ark": "ark description",
+    "user_id": "password"
+}
+```
+
+| Field        | Type      | Required   | Unique     |
+|:------------:|:---------:|:----------:|:----------:|
+| ark        | String    |  true      | true       |
+| user_id    | integer    |  false     | false      |
 
 # Proposal
 

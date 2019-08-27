@@ -25,9 +25,11 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
           {touched.password && errors.password && <p className="error">{errors.password}</p>}
   
               {/* Password Confirmation input  */}
-              <label> <strong>Confirm Password</strong> </label> 
+              {/* <label> <strong>Confirm Password</strong> </label> 
           <Field className="input" type="password" name="passwordConfirm" placeholder="********" />
-          {touched.passwordConfirm && errors.passwordConfirm && <p className="error">{errors.passwordConfirm}</p>}
+          {touched.passwordConfirm && errors.passwordConfirm && <p className="error">{errors.passwordConfirm}</p>} */}
+
+
           <button type = "submit"
           className = "btnSignUp"> Join </button> 
            <p className="already-member"> Already a member? <a href="#"> Sign in </a></p >
@@ -39,11 +41,13 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
   };
 
   const FormikSignUpForm = withFormik({
-    mapPropsToValues({ email, password, passwordConfirm }) {
+    mapPropsToValues({ email, password, 
+      // passwordConfirm  
+    }) {
       return {
         email: email || '',
         password: password || '',
-        passwordConfirm: passwordConfirm|| '',
+        // passwordConfirm: passwordConfirm|| '',
       }
     },
   
@@ -52,20 +56,26 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
       .string().required("Email is required"),
       password: Yup
       .string().required("Password is required").min(6),
-      // passwordConfirm: Yup
-      // .string().required("Please confirm password").min(6),
+    //   passwordConfirm: Yup.string()
+    //   .required("Please confirm password")
+    //  .oneOf([Yup.ref('password'), null], 'Passwords must match')
     }),
   
     handleSubmit(values, { setStatus }) {
+
       console.log("sign up form values =", values);
+      console.log("sign up form email value =", values.email);
+      console.log("sign up form password value =", values.password);
+
+
       axios
       .post(`https://random-ark-generator.herokuapp.com/api/auth/register`, values)
         .then(response => {
             console.log("sign up response success =", response)
-            // setStatus(response.data.payload)
+            // setStatus(response.data)
             // localStorage.setItem('token', response.data);
         })
-        .catch(error => console.log(error.response));
+        .catch(error => console.log("sign up errorz", error.response));
     }
   })(SignUpForm) 
   

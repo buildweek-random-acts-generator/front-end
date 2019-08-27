@@ -1,0 +1,13 @@
+.tab {
+  background: #c3a9ee;
+  padding: 1.5em;
+}
+
+.tab a {
+  padding: 0.7em;
+} 
+
+.tab a:hover {
+  color: black;
+  text-decoration: underline;
+}
