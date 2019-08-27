@@ -1,5 +1,69 @@
 # Front-end
--test
+-test test2 EK
+
+# Back-end
+
+# ARK
+
+Inspiring yourself can be a chore let ARK help you be your best self. 
+
+## Overview
+This API is used as part of the application _ARK Project_ and allows for CRUD operations to be preformed on the users _contacts_ and _actions_. 
+
+This documentation will cover all of the data models and endpoints which can be access via
+> <https://random-ark-generator.herokuapp.com/api/>
+
+# Endpoints
+
+## Authentication
+
+| Request Type | Endpoint      | Description   |
+|:------------:|:-------------:|:-------------:|
+| POST         | /auth/register | Creates User  |
+| POST         | /auth/login    | Creates JWT*  |
+
+* JSON Web Tokens Used to Verify Users
+
+## Authentication
+
+### Register
+
+* A __POST__ request to the `/auth/register` endpoint expects to recieve an object as follows: 
+
+```javascript
+{
+    "email": "email@address.com",
+    "password": "password"
+}
+```
+
+| Field        | Type      | Required   | Unique     |
+|:------------:|:---------:|:----------:|:----------:|
+| email        | String    |  true      | true       |
+| password     | String    |  true      | false      |
+
+### Login
+
+* A __POST__ request to the `/auth/login` endpoint expects to recieve an object as follows: 
+
+```javascript
+{
+    "email": "email",
+    "password": "password",
+}
+{
+	"email":"testing@test.com",
+	"password":"testpassword"
+}
+```
+
+| Field        | Type      | Required   | Unique     |
+|:------------:|:---------:|:----------:|:----------:|
+| email        | String    |  true      | true       |
+| password     | String    |  true      | false      |
+
+* The __POST__ request to `/auth/login` will return a jwt and a login message.
+
 # Proposal
 
  What problem does your app solve?
@@ -13,7 +77,7 @@ Our mission is to connect people one random act of kindness at a time. We strive
 
 
 
-# Features
+# Features 
 
  What features are required for your minimum viable product?
 - Navigation on all pages
@@ -39,6 +103,7 @@ Our mission is to connect people one random act of kindness at a time. We strive
 - Frontend: React
 - Backend: Node.js
 - Formik
+- Semantic-ui
  
 Do APIs require you to contact its maintainer to gain access?
 - No
@@ -78,3 +143,62 @@ Prototype Key Feature(s)
 - Ideas List - Wednesday
 - Idea Generator Page - Thursday
 - User onboarding (Login, Sign-up) - Wednesday/Thursday
+
+# Back-end
+
+# ARK
+
+Inspiring yourself can be a chore let ARK help you be your best self. 
+
+## Overview
+This API is used as part of the application _ARK Project_ and allows for CRUD operations to be preformed on the users _contacts_ and _actions_. 
+
+This documentation will cover all of the data models and endpoints which can be access via
+> <https://random-ark-generator.herokuapp.com/>
+
+# Endpoints
+
+## Authentication
+
+| Request Type | Endpoint      | Description   |
+|:------------:|:-------------:|:-------------:|
+| POST         | /register | Creates User  |
+| POST         | /login    | Creates JWT*  |
+
+* JSON Web Tokens Used to Verify Users
+
+## Authentication
+
+### Register
+
+* A __POST__ request to the `/register` endpoint expects to recieve an object as follows: 
+
+```javascript
+{
+    "email": "email@address.com",
+    "password": "password"
+}
+```
+
+| Field        | Type      | Required   | Unique     |
+|:------------:|:---------:|:----------:|:----------:|
+| email        | String    |  true      | true       |
+| password     | String    |  true      | false      |
+
+### Login
+
+* A __POST__ request to the `/login` endpoint expects to recieve an object as follows: 
+
+```javascript
+{
+    "email": "email",
+    "password": "password",
+}
+```
+
+| Field        | Type      | Required   | Unique     |
+|:------------:|:---------:|:----------:|:----------:|
+| email        | String    |  true      | true       |
+| password     | String    |  true      | false      |
+
+* The __POST__ request to `/login` will return a jwt and a login message.
