@@ -1,32 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import axiosWithAuth from "../utils/axiosWithAuth";
+// import axiosWithAuth from "../utils/axiosWithAuth";
+import axios from "axios";
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import "./SignUpForm.css"
 
 const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
     
     return (
-      <div className="form-container">
-        <h1>Sign Up</h1>
-        <div>Create your account by filling in the forms </div>
-        <Form>
+      <div className="container-signup">
+      <div className="form-cover">
+<Form className = "form" >
+  <h2 className = "loginTitle" > Sign Up </h2>         
+<div className="create-account-header">Create your account by filling in the forms. </div>
             {/* Email input */}
-          <Field type="text" name="email" placeholder="Jane@gmail.com" />
+            <label> <strong>Email</strong></label> 
+          <Field className="input" type="text" name="email" placeholder="Jane@gmail.com" />
           {touched.email && errors.email && (
-            <p className="error">{errors.species}</p>
+            <p className="error">{errors.email}</p>
           )}
             {/* Password input  */}
-          <Field type="password" name="password" placeholder="******" />
+            <label> <strong>Create a Password</strong></label> 
+          <Field className="input" type="password" name="password" placeholder="********" />
           {touched.password && errors.password && <p className="error">{errors.password}</p>}
   
               {/* Password Confirmation input  */}
-          <Field type="password" name="passwordConfirm" placeholder="******" />
+              <label> <strong>Confirm Password</strong> </label> 
+          <Field className="input" type="password" name="passwordConfirm" placeholder="********" />
           {touched.passwordConfirm && errors.passwordConfirm && <p className="error">{errors.passwordConfirm}</p>}
+          <button type = "submit"
+          className = "btnSignUp"> Join </button> 
+           <p className="already-member"> Already a member? <a href="#"> Sign in </a></p >
           </Form>
           </div>
+          </div>
+
     );
   };
-  
 
   const FormikSignUpForm = withFormik({
     mapPropsToValues({ email, password, passwordConfirm }) {
@@ -38,17 +48,22 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
     },
   
     validationSchema: Yup.object().shape({
-      email: Yup.string().required(),
-      password: Yup.string().required(),
-      passwordConfirm: Yup.string()
+      email: Yup
+      .string().required("Email is required"),
+      password: Yup
+      .string().required("Password is required").min(6),
+      // passwordConfirm: Yup
+      // .string().required("Please confirm password").min(6),
     }),
   
     handleSubmit(values, { setStatus }) {
-      axiosWithAuth()
-        .post('https://reqres.in/api/users/', values)
+      console.log("sign up form values =", values);
+      axios
+      .post(`https://random-ark-generator.herokuapp.com/api/auth/register`, values)
         .then(response => {
-            console.log("response success", response)
-        //   setStatus(response.data);
+            console.log("sign up response success =", response)
+            // setStatus(response.data.payload)
+            // localStorage.setItem('token', response.data);
         })
         .catch(error => console.log(error.response));
     }
