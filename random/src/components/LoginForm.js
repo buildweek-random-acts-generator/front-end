@@ -59,8 +59,7 @@ function LoginForm({
                     email: Yup.string()
                         .required("Email is required"),
                     password: Yup.string()
-                        .min(2, "Password must be 10 characters or longer")
-                        .required("Password is required")
+                    .required("Password is required")
                 }),
                 handleSubmit(values, {
                     setStatus
