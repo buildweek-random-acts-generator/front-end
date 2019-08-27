@@ -8,6 +8,7 @@ import {
 
 import * as Yup from "yup";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function LoginForm({
     errors,
@@ -35,7 +36,7 @@ function LoginForm({
                         placeholder = "Enter your password" />
                             <button type = "submit"
                         className = "btnSignIn"> Login </button> 
-                        <p> Not a member yet? <a href="#"> Sign Up </a></p >
+                        <p> Not a member yet? <Link to='/signup'> Sign Up </Link></p >
                             </Form> 
                             </div> 
                             </div>

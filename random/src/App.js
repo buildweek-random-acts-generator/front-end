@@ -1,14 +1,20 @@
 import React from 'react';
+import { Route } from "react-router-dom";
 import './App.css';
-import LoginForm from "./components/LoginForm";
+import FormikLoginForm from "./components/LoginForm";
 import FormikSignUpForm from "./components/SignUpForm"
 import Nav from "./components/Nav";
+import RandomActsList from './components/RandomActs/RandomActsList';
 
 function App() {
   return (
     <div>
-    <FormikSignUpForm />
-     <LoginForm />
+      <Nav />
+      <Route exact path='/login' component={FormikLoginForm} />
+      <Route exact path='/signup' component={FormikSignUpForm} />
+    {/* <FormikSignUpForm />
+     <LoginForm /> */}
+     <RandomActsList />
     </div>
   );
 }
