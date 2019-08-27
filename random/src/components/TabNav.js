@@ -27,7 +27,7 @@ const panes = [
 
 
 export default function TabNav() {
-  return <Tab className='container' panes={panes} />
+  return <Tab className='container' panes={ panes } />
 }
 
 // ./src/components/TabNav.js
