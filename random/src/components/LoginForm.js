@@ -36,7 +36,7 @@ function LoginForm({
                         placeholder = "Enter your password" />
                             <button type = "submit"
                         className = "btnSignIn"> Login </button> 
-                        <p> Not a member yet? <Link to='/signup'> Sign Up </Link></p >
+                        <p className="notMember"> Not a member yet? <Link to='/signup'> Sign Up </Link></p >
                             </Form> 
                             </div> 
                             </div>
