@@ -27,7 +27,7 @@ const ActsEdit= ({ props, acts, updateActs }) => {
     const saveEdit = event => {
         event.preventDefault();
         axiosWithAuth()
-        .put(`http://localhost:5000/api/arks/${actToEdit.id}`, actToEdit)
+        .put(`https://random-ark-generator.herokuapp.com/api/arks/${actToEdit.id}`, actToEdit)
         .then(response => {
           console.log("saveEdit put request success", response.data)
           // setActToEdit(response.data);
@@ -41,7 +41,7 @@ const ActsEdit= ({ props, acts, updateActs }) => {
 
 const deleteAct = ark => {
     axiosWithAuth()
-      .delete(`http://localhost:5000/api/ark/${ark.id}`)
+      .delete(`https://random-ark-generator.herokuapp.com/api/arks/${ark.id}`)
       .then(response => {
         console.log("deleteAct delete request success", response.data);
         updateActs(acts.filter(ark => ark.id !== ark.id));

@@ -60,17 +60,15 @@ function LoginForm({
                     email: Yup.string()
                         .required("Email is required"),
                     password: Yup.string()
-                    .required("Password is required")
+                        .required("Password is required")
                 }),
-                handleSubmit(values, {
-                    setStatus
-                }) {
+                handleSubmit(values) {
                     console.log(values);
                     axios.post(`https://random-ark-generator.herokuapp.com/api/auth/login`, values)
                         .then(res => {
-                            console.log("login Payload", res.data)
-                            setStatus(res.data.payload)
-                            localStorage.setItem('token', res.data);
+                            console.log("login Payload", res.data.token)
+
+                            localStorage.setItem('token', res.data.token);
 
                         })
                         .catch(err => console.log(err.response));

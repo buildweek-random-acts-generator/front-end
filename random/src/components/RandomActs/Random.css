@@ -1,8 +1,25 @@
 .random-cards {
   width: 750px;
   padding: 15px 0 15px 20px;
+  margin: 0 auto;
 }
 
+.ideas{
+  background: #4788eb;
+  color: white;
+  text-align: center;
+  height: 150px;
+  position: relative;
+}
+
+.ideas h2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.5px;
+}
 
 .formRandom {
   display: flex;

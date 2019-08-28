@@ -75,16 +75,10 @@ const SignUpForm = ({ errors, touched, values, handleSubmit, status }) => {
 
       axios
       .post(`https://random-ark-generator.herokuapp.com/api/auth/register`, submitValues)
-        .then(response => {
-            console.log("sign up response success =", response.data)
-            setStatus(response.data)
-            
-            // localStorage.setItem('token', response.data);
-
-            // Store object 
-            localStorage.setItem('token', JSON.stringify(response.data));
-            // Retrieve object 
-            var token = JSON.parse(localStorage.getItem('token'));
+        .then(res => {
+          // setStatus(response.data),
+          console.log("login Payload", res.data.token)
+          localStorage.setItem('token', res.data.token);
 
         })
         .catch(error => console.log("sign up errorz", error.response));

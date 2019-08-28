@@ -27,13 +27,10 @@ const RandomActsList = props => {
         <p>Loading...</p>
       )}
       <div>
-          <RandomActsEdit acts={acts} updateActs={setActs} />
-         
-
+        <RandomActsEdit acts={acts} updateActs={setActs} />
       </div> 
     </div>
   )
 }
-
 
 export default RandomActsList;

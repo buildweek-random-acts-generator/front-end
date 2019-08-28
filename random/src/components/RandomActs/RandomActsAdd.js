@@ -1,59 +1,57 @@
-import React from 'react';
+import React, {
+    useState
+} from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth"
-import {
-    withFormik,
-    Form,
-    Field
-} from "formik";
+import './Random.css';
 
-import * as Yup from "yup";
-import "./Random.css";
-
-function RandomActsAdd() {
-    return (
-
-        <div>
-        <Form className="formRandom" >
-        <Field type="act"
-        name="act"
-        className = "inputRandom"
-        placeholder= "Add an Act" />
-        <button className = "btnRandom"type = "submit" >Add Act </button> 
-        </Form>
-        </div>
-    )
-}
+const RandomActsAdd = props => {
+    const [arks, setArks] = useState({});
 
 
-const FormikRandomActsAdd = withFormik({
-    mapPropsToValues({
-        act
-    }) {
-        return {
-            act: act || "",
-        };
-    },
 
-    validationSchema: Yup.object().shape({
-        act: Yup.string()
-            .required("Please Type Something")
-    }),
+    const changeHandler = ev => {
+        ev.persist();
+        let value = ev.target.value;
 
-    handleSubmit(values, {
-            setStatus
-        }) {
-        console.log(values);
-        axiosWithAuth.post('https://random-ark-generator.herokuapp.com/api/arks/', values)
+        setArks({
+            ...arks,
+            [ev.target.name]: value
+        });
+    };
+
+
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .post(`https://random-ark-generator.herokuapp.com/api/arks`, arks)
             .then(res => {
-                console.log("login Payload", res.data)
+                console.log("insideAuth", res.data)
 
-                  setStatus(res.data)
-                  localStorage.setItem('token', res.data);
 
             })
             .catch(err => console.log(err.response));
+    };
 
-    }
-})(RandomActsAdd);
+    return ( 
+    
+    <div >
+        <div className='ideas'>
+            <h2>Ideas</h2>
+        </div>
+        <form className="formRandom" onSubmit = {handleSubmit}>
+        <input type="text"
+        className="inputRandom"
+        name="ark"
+        placeholder="Add An Act"
+        onChange={changeHandler}
+        value={arks.ark}
+        /> 
+        
+        <button className="btnRandom" type="submit" >Add Act </button> 
+        </form> </div>
 
-export default FormikRandomActsAdd;
+    );
+}
+
+export default RandomActsAdd;

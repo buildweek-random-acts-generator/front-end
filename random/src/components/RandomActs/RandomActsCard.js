@@ -12,7 +12,6 @@ export default function RandomActsCard(props) {
         <List.Content floated="right">
         <Icon name='delete'/>
         <Icon name='edit' />
-          {/* <Button> Edit</Button> */}
         </List.Content>
         <List.Content>{ark}</List.Content>
       </List.Item>
