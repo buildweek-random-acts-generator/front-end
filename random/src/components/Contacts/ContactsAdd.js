@@ -19,8 +19,14 @@ const changeHandler = event => {
 const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-        .post(`https://random-ark-generator.herokuapp.com/api/contacts`, )
-}
+        .post(`https://random-ark-generator.herokuapp.com/api/contacts/${user_id}`, contacts)
+        .then(res => {
+            setContacts({
+                contacts: ''
+            });
+        })
+        .catch(err => console.log(err.response))
+};
 
   
 
@@ -28,8 +34,18 @@ const handleSubmit = e => {
 return (
 
     <div>
-   
-   
+   <form className="contactsForm" onSubmit= {handleSubmit}>
+       <input type="text"
+       className="inputContact"
+       name="contact"
+       placeholder="Add Contact"
+       onChange={changeHandler}
+       value={contacts.contact}
+   />
+
+   <button className="contactbtn" type="submit" >Add Contact </button>
+
+   </form>
     </div>
   );
 

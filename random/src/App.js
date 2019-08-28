@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <Nav />
-      <Route exact path='/login' component={FormikLoginForm} />
+      <Route exact path='/' component={FormikLoginForm} />
       <Route exact path='/signup' component={FormikSignUpForm} />
       <PrivateRoute path='/ideas' component= { RandomActsAdd } />
       <PrivateRoute path='/ideas' component={ RandomActsList } />

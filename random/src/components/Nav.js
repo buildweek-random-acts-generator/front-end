@@ -10,8 +10,8 @@ export default function Nav() {
         <h1 className='logo'>RandomAct</h1>
       </a>
       <div className='nav-links'>
-        <Link to='/welcome'>Home</Link>
-        <Link to='/login'>Login</Link>
+        <Link to='/welcome'>Welcome</Link>
+        <Link to='/'>Login</Link>
         <Link to='/signup'>Sign Up</Link>
         <Link to="/ideas">Ideas</Link>
         < Link to="/contacts"> Contacts </Link>

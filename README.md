@@ -63,6 +63,7 @@ This documentation will cover all of the data models and endpoints which can be 
 | Request Type | Endpoint | Description |
 |:------------:|:--------:|:-----------:|
 | GET          | /arks/   | Gets ARKS|
+| GET          | /arks/random| Gets a Random ARK|
 | POST         | /arks/   | Posts a ARK|
 | PUT          | /arks/:id| Updates ARKS by ID|
 | DELETE       | /arks/:id| Deletes ARKS by ID|
@@ -87,6 +88,7 @@ This documentation will cover all of the data models and endpoints which can be 
 | Request Type | Endpoint | Description |
 |:------------:|:--------:|:-----------:|
 | GET          | /contacts/:user_id   | Gets contacts by user_id|
+| GET          | /contacts/:user_id/random | Chooses a users Random Contact|
 | POST         | /contacts/   | Posts a Contact with built in user_id!|
 | PUT          | /contacts/:id| Updates contacts by ID|
 | DELETE       | /contacts/:id| Deletes contacts by ID|
@@ -96,8 +98,10 @@ This documentation will cover all of the data models and endpoints which can be 
 
 ```javascript
 {
-    "name": "Contact Name",
-    "info": "Contact Info"
+    "first_name": "Contact First Name",
+    "last_name": "Contact Last Name",
+    "email":"Contact Email",
+    "phone":"Contact Phone Number"
 }
 ```
 

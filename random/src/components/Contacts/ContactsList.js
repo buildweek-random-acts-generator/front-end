@@ -8,12 +8,12 @@ import './Contacts.css';
 
 
 const ContactsList = (user_id) => {
-  const [contact, setContact] = useState([]);
+  const [contacts, setContact] = useState([]);
 
   useEffect(() => {
     axiosWithAuth().get(`https://random-ark-generator.herokuapp.com/api/contacts/${user_id}`)
     .then(res => {
-      console.log(res.data)
+      console.log(res)
       setContact(res.data)
     })
     .catch(err => console.log('Contacts list not working ', err))
@@ -25,7 +25,14 @@ const ContactsList = (user_id) => {
         <h1>Contacts</h1>
         </div>
         <div className='contacts-cards'>
-          <ContactsCard />
+          {contacts.length ? (
+            contacts.map(contact => {
+              return <ContactsCard contact={contact} />
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+          
       </div>
     </div>
   )
