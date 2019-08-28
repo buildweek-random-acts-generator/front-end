@@ -74,7 +74,7 @@ export class Dashboard extends React.Component {
       return (
         <button 
           className="btn btn-info float-right" 
-          type="button" href="/signup" onClick={this.handleSubmit}>
+          href="/signup">
         Sign-Up 
         </button>
           
@@ -86,6 +86,7 @@ export class Dashboard extends React.Component {
     
     render() {    
       return (
+        <body class="Dashboard"> 
         <div className='DashboardView'>
         <p className="step-count">STEP {this.state.currentStep} </p>
                   <h3>Welcome to RandomActs!</h3>
@@ -109,6 +110,7 @@ export class Dashboard extends React.Component {
   
         </form>
         </div>
+        </body>
       );
     }
   }
@@ -119,7 +121,7 @@ export class Dashboard extends React.Component {
     } 
     return(
       <div className="form-group">
-             <img src ={conimg} alt="Contacts" class="center" />
+             <img src ={conimg} alt="Contacts" className="center" />
              <h3>Add your contacts!</h3>
             <p>In order to randomize a service idea with someone you know, you'll need to create a list of contacts.</p>
       </div>

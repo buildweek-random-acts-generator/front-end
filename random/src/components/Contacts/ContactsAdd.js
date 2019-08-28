@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Random.css';
+import './Contacts.css';
 
 const ContactsAdd = props => {
     const [Contacts, setContacts] = useState ({});
@@ -11,7 +11,7 @@ const changeHandler = event => {
     let value = event.target.value;
 
     setContacts({
-        ...Contacts,
+        ...contacts,
         [event.target.name]: value
     });
 };
@@ -19,7 +19,7 @@ const changeHandler = event => {
 const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-        .post()
+        .post(`https://random-ark-generator.herokuapp.com/api/contacts`, )
 }
 
   

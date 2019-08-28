@@ -3,7 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Random.css';
 import RandomActsCard from './RandomActsCard';
-import RandomActsEdit from "./RandomActsEdit"
+
+import RandomActsEdit from "./RandomActsEdit";
+// import RandomActsDelete from "./RandomActsDelete";
 
 const RandomActsList = props => {
   const [acts, setActs] = useState([]);
@@ -28,6 +30,8 @@ const RandomActsList = props => {
       )}
       <div>
         <RandomActsEdit acts={acts} updateActs={setActs} />
+        {/* <RandomActsDelete acts={acts} updateActs={setActs} /> */}
+
       </div> 
     </div>
   )

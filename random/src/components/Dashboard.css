@@ -1,6 +1,8 @@
-/* body{
+body .Dashboard {
 	background-color: #6927d8;
-} */
+	margin-bottom: -100px;
+	padding-bottom: 200px;
+}
 *:focus{
 	outline: none !important;
 }

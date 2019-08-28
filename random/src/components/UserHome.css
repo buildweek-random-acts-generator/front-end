@@ -14,7 +14,7 @@ position: relative;
     transform: translate(-50%, -50%);
     letter-spacing: 0.5px;
     font-size: 40px;
-    font-family: "Roboto";
+    font-family: 'Roboto';
 }
 
 .shapes{
@@ -26,9 +26,8 @@ position: relative;
 }
 
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 figure.snip1321 {
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: 'Roboto';
   position: relative;
   overflow: hidden;
   margin: 10px;
@@ -73,7 +72,7 @@ figure.snip1321 i {
   font-size: 32px;
 }
 figure.snip1321:after {
-  background-color: #ffffff;
+  background-color: #c3a9ef;
   position: absolute;
   content: "";
   display: block;
@@ -89,6 +88,7 @@ figure.snip1321:after {
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   opacity: 0;
+  padding: 60px;
 }
 figure.snip1321 a {
   left: 0;

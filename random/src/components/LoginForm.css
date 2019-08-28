@@ -1,6 +1,7 @@
 .container {
         background: #c3a9ee;
-        padding: 100px;
+        padding-bottom: 270px;
+        padding-top: 125px;
 }
 
 .form {
@@ -40,7 +41,7 @@ margin-top: 0.5rem;
            font-size: 2.5rem;
 }
 
-.btnSignIn {
+/* .btnSignIn {
         cursor: pointer;
         background: #767676;
         width: 100%;
@@ -50,7 +51,45 @@ margin-top: 0.5rem;
         -webkit-transition: 0.3s ease;
         transition: 0.3s ease;
         font-size: 1.7rem;
+} */
+
+.btnSignIn {
+        background-color: #20262e;
+        position: relative;
+  border: none;
+  font-size: 1.7rem;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 5px;
 }
+
+.btnSignIn:after {
+        content: "";
+        background: #767676;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px!important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+      }
+ 
+      .btnSignIn:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+      }
+
 
 a {
         text-decoration: none;

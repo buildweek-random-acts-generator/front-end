@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import { Button, Icon, List } from 'semantic-ui-react';
+// import { Button, Icon, List } from 'semantic-ui-react';
 
 
 const initialAct = {
@@ -23,21 +23,21 @@ const ActsEdit= ({ props, acts, updateActs }) => {
 
 
 
-    // useEffect(() => {
     const saveEdit = event => {
-        event.preventDefault();
+        // event.preventDefault();
         axiosWithAuth()
         .put(`https://random-ark-generator.herokuapp.com/api/arks/${actToEdit.id}`, actToEdit)
         .then(response => {
           console.log("saveEdit put request success", response.data)
-          // setActToEdit(response.data);
-          // props.history.push("/randomactslist");
+          setActToEdit(response.data);
+          // props.history.push("/ideas");
         })
         .catch(error => console.log(error.response));
     };
 
-// }, []);
-
+    useEffect(() => {
+      saveEdit();
+    }, []);
 
 const deleteAct = ark => {
     axiosWithAuth()
@@ -45,7 +45,7 @@ const deleteAct = ark => {
       .then(response => {
         console.log("deleteAct delete request success", response.data);
         updateActs(acts.filter(ark => ark.id !== ark.id));
-        // props.history.push("/");
+        props.history.push("/ideas");
       })
       .catch(error => console.log(error.response));
   };
@@ -58,7 +58,7 @@ return (
       <p>acts</p>
       <ul>
         {acts.map(ark => (
-          <li key={ark} onClick={() => editAct(ark)}>
+          <li key={ark.ark} onClick={() => editAct(ark)}>
             <span>
               <span className="delete" onClick={() => deleteAct(ark)}>
                Remove
@@ -85,7 +85,7 @@ return (
             <button onClick={() => setEditing(false)}>cancel</button>
           </div>
         </form>
-      )}
+      )} 
 
     </div>
   );
