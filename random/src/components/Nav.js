@@ -19,7 +19,7 @@ const Nav = props => (
 
       <div className='toolbar-navigation-items'>
         <Link to="/welcome">Home</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/">Login</Link>
         <Link to="/signup">Sign Up</Link>
         <Link to="/ideas">Ideas</Link>
         <Link to="/contacts"> Contacts </Link>

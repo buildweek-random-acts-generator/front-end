@@ -13,7 +13,7 @@ import RandomActsAdd from './components/RandomActs/RandomActsAdd';
 import { Dashboard } from './components/Dashboard';
 import UserHome from './components/UserHome';
 import ContactsList from './components/Contacts/ContactsList';
-//import ContactsAdd from './components/Contacts//ContactsAdd';
+import ContactsAdd from './components/Contacts//ContactsAdd';
 
 // import RandomActsDisplay from "./components/RandomActs/RandomActsDisplay";
 
@@ -53,7 +53,7 @@ function App() {
       <PrivateRoute path='/ideas' component={ RandomActsList } />
       <PrivateRoute exact path='/home' component={ Dashboard } />
       <PrivateRoute exact path='/randomizer' component={Randomizer} />
-      {/* <PrivateRoute exact path='/contacts' component={ContactsAdd}/> */}
+      <PrivateRoute exact path='/contacts' component={ContactsAdd}/>
       <PrivateRoute exact path = '/contacts'component={ContactList}/>
       <PrivateRoute path='/welcome' component={ UserHome } />
 

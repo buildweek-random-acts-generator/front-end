@@ -3,7 +3,7 @@ import axiosWithAuth from "../../utils/axiosWithAuth";
 import './Contacts.css';
 
 const ContactsAdd = props => {
-    const [contact, setContact] = useState ({firt_name: ""});
+    const [contact, setContact] = useState ({first_name: ""});
 
 
 const changeHandler = event => {
@@ -43,6 +43,13 @@ return (
        value={contact.first_name}
    />
 
-   <b
+<button className="contactbtn" type="submit" >Add Contact </button> 
+        </form>
+
+    </div>    
+
+);
+
+}
 
 export default ContactsAdd;

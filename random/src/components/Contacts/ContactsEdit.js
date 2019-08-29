@@ -28,7 +28,7 @@ const ContactsEdit = ({ props, contacts, updateContacts}) => {
     const saveEdit = event => {
         // event.preventDefault();
         axiosWithAuth()
-        .put(`https://random-ark-generator.herokuapp.com/api/contacts/${1}`, contactToEdit)
+        .put(`https://random-ark-generator.herokuapp.com/api/contacts/${contactToEdit.id}`, contactToEdit)
 
         .then(response => {
           console.log("saveEdit put request success for contacts", response.data)
