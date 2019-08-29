@@ -28,11 +28,10 @@ function App() {
     state ? setState(false) : setState(true);
   }
 
-  let sideDrawer;
   let backdrop;
 
   if (state) {
-    sideDrawer = <SideDrawer />;
+    // sideDrawer = <SideDrawer />;
     backdrop = <BackDrop click={backDropClickHandler} />;
   }
 
@@ -44,7 +43,7 @@ function App() {
     <div>
       
       <Nav drawerClickHandler={drawerToggleClickHandler}/>
-      {sideDrawer}
+      <SideDrawer show={state} />
       {backdrop}
 
       <Route exact path='/' component={FormikLoginForm} />

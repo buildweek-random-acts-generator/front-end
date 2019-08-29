@@ -31,7 +31,7 @@ const RandomActsList = props => {
         acts.map(randomActs => {
       return (
       <div className="acts-card">
-      <RandomActsCard ark={randomActs} />
+      <RandomActsCard ark={randomActs} id={randomActs.id}/>
       {/* <RandomActsDelete acts={acts} deleteActs={setActs} /> */}
       {/* <RandomActsEdit acts={acts} updateActs={setActs} /> */}
 

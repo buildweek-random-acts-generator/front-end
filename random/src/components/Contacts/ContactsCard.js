@@ -7,9 +7,9 @@ export default function ContactsCard(props) {
     email
   } = props.contact;
 
+
+  
   return (
-
-
 
     <tr className = "listContacts" >
 

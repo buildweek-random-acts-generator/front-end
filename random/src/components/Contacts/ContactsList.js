@@ -11,9 +11,6 @@ import ContactsCard from './ContactsCard';
 
 import './Contacts.css';
 
-import ContactsEdit from "./ContactsEdit";
-import ContactsDelete from "./ContactsDelete";
-
 
 const ContactsList = () => {
   const [contacts, setContacts] = useState([]);
@@ -31,13 +28,6 @@ const ContactsList = () => {
 
   return ( 
     <div className = "ContainerContact" >
-
-<div>
-<ContactsEdit contacts={contacts} updateContacts={setContacts} />
-  </div>
-  <div>
-<ContactsDelete contacts={contacts} deleteContacts={setContacts} />
-  </div>
 
     <div className = 'contacts-cards'>
     <table className = "tableContacts">

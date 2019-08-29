@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axiosWithAuth from "../utils/axiosWithAuth"
-
+import { Random} from "../utils/Authentication";
 import './Randomizer.css';
 
 
@@ -37,7 +37,7 @@ const Randomizer = () => {
         //         .catch(err => console.log('Cannot get list', err));
         // }, []);
 
-
+ 
         return ( 
 
             <div className="mainCover">
@@ -48,8 +48,9 @@ const Randomizer = () => {
                 <p className="titleRandom">{ranark.ark}</p>
                 <p className="titleRandom">For</p>
                 <p className="titleRandom">{rancon.first_name} {rancon.last_name}</p>
-                 <button className = "btnRandomizer" > Completed </button>
-                 < button className ="btnRandomizer" > Randomize </button>
+                 {/* <button className = "btnRandomizer" > Completed </button> */}
+                 < button className = "btnRandomizer" onClick={Random}> Randomize </button>
+          
                 </div>
                
                 </div>

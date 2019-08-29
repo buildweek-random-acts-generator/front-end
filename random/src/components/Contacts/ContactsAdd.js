@@ -43,6 +43,14 @@ return (
        value={contact.first_name}
    />
 
+<input type="text"
+       className="inputContact"
+       name="phone"
+       placeholder="Phone Number"
+       onChange={changeHandler}
+       value={contact.contacts}
+   />
+
 <button className="contactbtn" type="submit" >Add Contact </button> 
         </form>
 

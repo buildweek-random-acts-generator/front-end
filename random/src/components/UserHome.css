@@ -25,6 +25,16 @@ position: relative;
     justify-content: center;
 }
 
+@media (max-width: 500px) {
+  .shapes {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .WelcomeBack h2 {
+    font-size: 1.5rem;
+  }
+}
+
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 figure.snip1321 {
   font-family: 'Roboto';
