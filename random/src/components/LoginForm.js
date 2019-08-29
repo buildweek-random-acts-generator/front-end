@@ -8,8 +8,9 @@ import {
 
 import * as Yup from "yup";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
-function LoginForm({
+function LoginForm( {
     errors,
     touched
 }) {
@@ -35,7 +36,7 @@ function LoginForm({
                         placeholder = "Enter your password" />
                             <button type = "submit"
                         className = "btnSignIn"> Login </button> 
-                        <p> Not a member yet? <a href="#"> Sign Up </a></p >
+                        <p className="notMember"> Not a member yet? <Link to='/signup'> Sign Up </Link></p >
                             </Form> 
                             </div> 
                             </div>
@@ -59,18 +60,22 @@ function LoginForm({
                     email: Yup.string()
                         .required("Email is required"),
                     password: Yup.string()
-                    .required("Password is required")
+                        .required("Password is required")
                 }),
                 handleSubmit(values, {
-                    setStatus
-                }) {
-                    console.log(values);
+                        resetForm,
+                        setStatus,
+                        props
+                    }) {
+              
                     axios.post(`https://random-ark-generator.herokuapp.com/api/auth/login`, values)
                         .then(res => {
-                            console.log("login Payload", res.data)
-                            setStatus(res.data.payload)
-                            localStorage.setItem('token', res.data);
-
+                            console.log("login success, login Payload =", res.data.token, res.data.id)
+                          setStatus(res.data.token)
+                          resetForm();
+                            localStorage.setItem('token', res.data.token);
+                            localStorage.setItem('id', res.data.id);
+                           props.history.push('/welcome');
                         })
                         .catch(err => console.log(err.response));
 
