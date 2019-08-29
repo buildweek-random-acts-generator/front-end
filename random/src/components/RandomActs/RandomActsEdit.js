@@ -4,11 +4,13 @@ import axios from "axios";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import { Button, Icon, List } from 'semantic-ui-react';
 
+
 const initialAct = {
     ark: '',
 };
 
-const ActsEdit = ({ props, acts, updateActs }) => {
+const RandomActsEdit = ({ props, acts, updateActs }) => {
+
     console.log("acts data from Random Acts List", acts);
     const [editing, setEditing] = useState(false);
     const [actToEdit, setActToEdit] = useState(initialAct);
@@ -40,13 +42,19 @@ const ActsEdit = ({ props, acts, updateActs }) => {
 return (
   <div className="acts-edit-wrap">
   <ul>
-    {acts.map(ark => (
-      <div key={ark.ark} onClick={() => editAct(ark)}>
-          <div className="edit" onClick={() => saveEdit(ark)}>
+    {/* {acts.map(ark => ( */}
+      <div 
+        // key={ark.ark} 
+        onClick={() => editAct(`${actToEdit.id}`)}>
+                  {/* onClick={() => editAct(ark)}> */}
+
+          <div className="edit" onClick={() => saveEdit(`${actToEdit.id}`)}>
+          {/* <div className="edit" onClick={() => saveEdit(ark)}> */}
+
           <Icon className="edit-icon" name="edit" />
         </div>
       </div>
-    ))}
+    {/* ))} */}
   </ul>
       {editing && (
         <form onSubmit={saveEdit}>
@@ -71,6 +79,6 @@ return (
     </div>
   );
 };
-export default ActsEdit;
+export default RandomActsEdit;
 
 

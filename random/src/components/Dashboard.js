@@ -86,7 +86,7 @@ export class Dashboard extends React.Component {
     
     render() {    
       return (
-        <body class="Dashboard"> 
+        <div className="Dashboard"> 
         <div className='DashboardView'>
         <p className="step-count">STEP {this.state.currentStep} </p>
                   <h3>Welcome to RandomActs!</h3>
@@ -110,7 +110,7 @@ export class Dashboard extends React.Component {
   
         </form>
         </div>
-        </body>
+        </div>
       );
     }
   }

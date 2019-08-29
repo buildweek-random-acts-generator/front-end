@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 import './Contacts.css';
 
 const ContactsAdd = props => {
-    const [Contacts, setContacts] = useState ({});
+    const [contact, setContact] = useState ({firt_name: ""});
 
 
 const changeHandler = event => {
     event.persist();
     let value = event.target.value;
 
-    setContacts({
-        ...contacts,
+    setContact({
+        ...contact,
         [event.target.name]: value
     });
 };
@@ -19,36 +19,30 @@ const changeHandler = event => {
 const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-        .post(`https://random-ark-generator.herokuapp.com/api/contacts/${user_id}`, contacts)
+        .post(`https://random-ark-generator.herokuapp.com/api/contacts/`, contact)
         .then(res => {
-            setContacts({
-                contacts: ''
+            setContact({
+                first_name: ''
             });
         })
         .catch(err => console.log(err.response))
 };
 
-  
-
-
 return (
 
     <div>
+    <div className = "contact-wrap">
+    <h1> Contacts </h1> 
+    </div> 
    <form className="contactsForm" onSubmit= {handleSubmit}>
        <input type="text"
        className="inputContact"
        name="contact"
        placeholder="Add Contact"
        onChange={changeHandler}
-       value={contacts.contact}
+       value={contact.first_name}
    />
 
-   <button className="contactbtn" type="submit" >Add Contact </button>
-
-   </form>
-    </div>
-  );
-
-}
+   <b
 
 export default ContactsAdd;

@@ -54,8 +54,46 @@
 
 }
 
-.edit-icon {
- 
+.random-acts-formatting {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  width: 100%;
+
+}
+
+.acts-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.random-actz {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid green;
+}
 
 
+.random-delete {
+  border: 2px solid black;
+  width: 10%;
+}
+
+.random-edit {
+  border: 2px solid purple;
+  width: 10%;
+  
+
+}
+
+.edit-delete-acts {
+  border: 4px solid teal;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 50%;
+}
+
+.random-cards {
+display: flex;
+flex-direction: row;
 }

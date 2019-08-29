@@ -8,7 +8,7 @@ const initialAct = {
     ark: '',
 };
 
-const ActsDelete = ({ props, acts, deleteActs }) => {
+const RandomActsDelete = ({ props, acts, deleteActs }) => {
     console.log("acts data from Random Acts List", acts);
     const [deleting, setDeleting] = useState(false);
     const [actToDelete, setActToDelete] = useState(initialAct);
@@ -44,7 +44,8 @@ return (
           <div key={ark.ark} onClick={() => deleteAct(ark)}>
             <span>
               <span className="delete" onClick={() => saveDelete(ark)}>
-              <Icon className="delete-icon" name="delete" />
+              <Icon className="delete-icon" name="trash alternate outline
+" />
               </span>{" "}
             </span>
           </div>
@@ -54,6 +55,6 @@ return (
     </div>
   );
 };
-export default ActsDelete;
+export default RandomActsDelete;
 
 

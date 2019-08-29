@@ -25,18 +25,32 @@ const RandomActsList = props => {
 
   return (
     <div className='random-cards'>
-      {acts.length ? (
+      <div className="random-acts-formatting">
+      {acts.length ? 
+      (
         acts.map(randomActs => {
-        return <RandomActsCard ark={randomActs} />;
+      return (
+      <div className="acts-card">
+      <RandomActsCard ark={randomActs} />
+      {/* <RandomActsDelete acts={acts} deleteActs={setActs} /> */}
+      {/* <RandomActsEdit acts={acts} updateActs={setActs} /> */}
+
+      </div> )
       })
-    
       ) : (
         <p>Loading...</p>
       )}
-      <div>
+      <div className="edit-delete-acts">
+        
+        <div className="random-delete">
         <RandomActsDelete acts={acts} deleteActs={setActs} />
+        </div>
+        <div className="random-edit">
         <RandomActsEdit acts={acts} updateActs={setActs} />
+        </div>
       </div> 
+
+      </div>
     </div>
   )
 }
