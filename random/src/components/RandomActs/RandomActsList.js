@@ -16,7 +16,7 @@ const RandomActsList = props => {
   useEffect(() => {
     axios.get('https://random-ark-generator.herokuapp.com/api/arks/')
     .then(res => {
-      console.log(res.data);
+      console.log("random acts get success", res.data);
       setActs(res.data)
     })
     .catch(err => console.log('Cannot get list', err));
@@ -28,10 +28,11 @@ const RandomActsList = props => {
       <div className="random-acts-formatting">
       {acts.length ? 
       (
-        acts.map(randomActs => {
+        acts.map(randomAct => {
       return (
       <div className="acts-card">
-      <RandomActsCard ark={randomActs} id={randomActs.id}/>
+      <RandomActsCard act={randomAct} id={randomAct.id}
+      deleteActs={setActs} editActs={setActs}/>
       {/* <RandomActsDelete acts={acts} deleteActs={setActs} /> */}
       {/* <RandomActsEdit acts={acts} updateActs={setActs} /> */}
 
@@ -45,9 +46,9 @@ const RandomActsList = props => {
         <div className="random-delete">
         <RandomActsDelete acts={acts} deleteActs={setActs} />
         </div>
-        <div className="random-edit">
+        {/* <div className="random-edit">
         <RandomActsEdit acts={acts} updateActs={setActs} />
-        </div>
+        </div> */}
       </div> 
 
       </div>

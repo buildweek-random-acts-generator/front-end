@@ -11,11 +11,12 @@ const initialAct = {
 
 const RandomActsEdit = ({ props, acts, updateActs }) => {
 
-    console.log("acts data from Random Acts List", acts);
+    // console.log("acts data from Random Acts List", acts);
+    
     const [editing, setEditing] = useState(false);
     const [actToEdit, setActToEdit] = useState(initialAct);
 
-  console.log("actToEdit", actToEdit);
+  // console.log("actToEdit", actToEdit);
 
     const editAct = ark => {
       setEditing(true);
@@ -62,6 +63,7 @@ return (
          
             
             <input
+            type="text"
               onChange={event =>
                 setActToEdit({ ...actToEdit, ark: event.target.value })
               }

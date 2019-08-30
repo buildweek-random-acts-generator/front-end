@@ -1,8 +1,6 @@
 .mainCover {
-
-      background: #ededed;
-      margin-bottom: 100px;
-
+  height: 100vh;
+  background: #ededed;
 }
 
 .boxInside {

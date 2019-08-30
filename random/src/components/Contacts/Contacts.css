@@ -91,3 +91,22 @@
   transition: 0.3s ease;
   height: 37px;
 }
+
+.delete-button {
+  background-color: #6927D8;
+  position: relative;
+  border: none;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #FFFFFF;
+  padding: 10px 15px;
+
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 5px;
+}

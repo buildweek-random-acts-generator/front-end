@@ -3,7 +3,7 @@ import axiosWithAuth from "../../utils/axiosWithAuth";
 import './Contacts.css';
 
 const ContactsAdd = props => {
-    const [contact, setContact] = useState ({first_name: ""});
+    const [contact, setContact] = useState ({first_name: "", last_name: "", phone: ""});
 
 
 const changeHandler = event => {
@@ -37,10 +37,18 @@ return (
    <form className="contactsForm" onSubmit= {handleSubmit}>
        <input type="text"
        className="inputContact"
-       name="contact"
-       placeholder="Add Contact"
+       name="contactfirst"
+       placeholder="First Name"
        onChange={changeHandler}
        value={contact.first_name}
+   />
+
+<input type="text"
+       className="inputContact"
+       name="contactlast"
+       placeholder="Last Name"
+       onChange={changeHandler}
+       value={contact.last_name}
    />
 
 <input type="text"
@@ -48,7 +56,7 @@ return (
        name="phone"
        placeholder="Phone Number"
        onChange={changeHandler}
-       value={contact.contacts}
+       value={contact.phone}
    />
 
 <button className="contactbtn" type="submit" >Add Contact </button> 

@@ -13,7 +13,8 @@ import RandomActsAdd from './components/RandomActs/RandomActsAdd';
 import { Dashboard } from './components/Dashboard';
 import UserHome from './components/UserHome';
 import ContactsList from './components/Contacts/ContactsList';
-import ContactsAdd from './components/Contacts//ContactsAdd';
+import ContactsAdd from './components/Contacts/ContactsAdd';
+import ContactsEdit from "./components/Contacts/ContactsEdit";
 
 // import RandomActsDisplay from "./components/RandomActs/RandomActsDisplay";
 
@@ -31,7 +32,6 @@ function App() {
   let backdrop;
 
   if (state) {
-    // sideDrawer = <SideDrawer />;
     backdrop = <BackDrop click={backDropClickHandler} />;
   }
 
@@ -48,6 +48,7 @@ function App() {
 
       <Route exact path='/' component={FormikLoginForm} />
       <Route exact path='/signup' component={FormikSignUpForm} />
+       <PrivateRoute exact path='/updatecontact/:id' component={ContactsEdit} />
       <PrivateRoute path='/ideas' component= { RandomActsAdd } />
       <PrivateRoute path='/ideas' component={ RandomActsList } />
       <PrivateRoute exact path='/home' component={ Dashboard } />
