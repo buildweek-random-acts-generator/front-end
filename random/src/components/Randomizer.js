@@ -6,8 +6,8 @@ import './Randomizer.css';
 
 
 const Randomizer = () => {
-         const [rancon, setRancon] = useState([]);
-         const [ranark, setRanark] = useState([])
+         const [rancon, setRancon] = useState({});
+         const [ranark, setRanark] = useState({})
 
          useEffect(() => {
             const id = localStorage.getItem('id')    

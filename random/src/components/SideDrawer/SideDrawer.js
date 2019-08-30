@@ -20,7 +20,7 @@ const SideDrawer = props => {
         <Link to="/ideas">Ideas</Link>
         <Link to="/contacts"> Contacts </Link>
         <Link to="/randomizer">Randomizer</Link>
-        <a onClick={logout}>Sign Out</a>
+        <Link onClick={logout}>Sign Out</Link>
       </div>
     </nav>
   );

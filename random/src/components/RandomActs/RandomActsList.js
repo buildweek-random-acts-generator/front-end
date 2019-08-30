@@ -1,59 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './Random.css';
 import RandomActsCard from './RandomActsCard';
 
-import RandomActsEdit from "./RandomActsEdit";
-import RandomActsDelete from "./RandomActsDelete";
+
 
 
 
 const RandomActsList = props => {
-  const [acts, setActs] = useState([]);
-  console.log(acts);
+  const [acts, setActs] = useState({});
+
 
   useEffect(() => {
     axios.get('https://random-ark-generator.herokuapp.com/api/arks/')
     .then(res => {
-      console.log("random acts get success", res.data);
       setActs(res.data)
     })
     .catch(err => console.log('Cannot get list', err));
   }, []);
 
+ 
 
-  return (
-    <div className='random-cards'>
-      <div className="random-acts-formatting">
-      {acts.length ? 
-      (
-        acts.map(randomAct => {
-      return (
-      <div className="acts-card">
-      <RandomActsCard act={randomAct} id={randomAct.id}
-      deleteActs={setActs} editActs={setActs}/>
-      {/* <RandomActsDelete acts={acts} deleteActs={setActs} /> */}
-      {/* <RandomActsEdit acts={acts} updateActs={setActs} /> */}
 
-      </div> )
-      })
-      ) : (
-        <p>Loading...</p>
-      )}
-      <div className="edit-delete-acts">
-        
-        <div className="random-delete">
-        <RandomActsDelete acts={acts} deleteActs={setActs} />
-        </div>
-        {/* <div className="random-edit">
-        <RandomActsEdit acts={acts} updateActs={setActs} />
-        </div> */}
-      </div> 
+   return (
+ 
+          <div className="random-acts-container">
+            <table className="tableRandom" >
+              <tbody>
+          {acts.length ? (
+            acts.map(act => {
+              return <RandomActsCard act={act}/>
+          })
+          ) : (
+            <div>Loading...</div>
+          )}
+          </tbody>
+          </table>
+          </div>
+          )
+       }
+       
 
-      </div>
-    </div>
-  )
-}
-
-export default RandomActsList;
+ export default RandomActsList;

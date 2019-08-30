@@ -5,23 +5,21 @@ import FormikLoginForm from "./components/LoginForm";
 import FormikSignUpForm from "./components/SignUpForm"
 import Nav from "./components/Nav";
 import PrivateRoute from "./utils/PrivateRoute";
-import Header from './components/Header';
 import RandomActsList from './components/RandomActs/RandomActsList';
 import Randomizer from "./components/Randomizer";
 import ContactList from "./components/Contacts/ContactsList";
 import RandomActsAdd from './components/RandomActs/RandomActsAdd';
 import { Dashboard } from './components/Dashboard';
 import UserHome from './components/UserHome';
-import ContactsList from './components/Contacts/ContactsList';
 import ContactsAdd from './components/Contacts/ContactsAdd';
 import ContactsEdit from "./components/Contacts/ContactsEdit";
 
-// import RandomActsDisplay from "./components/RandomActs/RandomActsDisplay";
 
 import BackDrop from './components/BackDrop/BackDrop';
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 
 
+import RandomActsEdit from "./components/RandomActs/RandomActsEdit";
 
 function App() {
   const [state, setState] = useState(false);
@@ -55,10 +53,10 @@ function App() {
       <PrivateRoute exact path='/randomizer' component={Randomizer} />
       <PrivateRoute exact path='/contacts' component={ContactsAdd}/>
       <PrivateRoute exact path = '/contacts'component={ContactList}/>
+      <PrivateRoute exact path = '/updateact/:id'component={RandomActsEdit}/>
       <PrivateRoute path='/welcome' component={ UserHome } />
 
-      {/* <PrivateRoute path='/ideas' component= { RandomActsDisplay} /> */}
-
+     
 
     </div>
   );

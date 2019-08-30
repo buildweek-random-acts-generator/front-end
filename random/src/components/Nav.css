@@ -33,6 +33,7 @@
 .toolbar-navigation-items a{
   color: white;
   padding: 0 0.5rem;
+      font-size: 1.5rem;
 }
 
 .toolbar-navigation-items a:hover {

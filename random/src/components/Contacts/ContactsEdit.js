@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
- import axiosWithAuth from "../../utils/axiosWithAuth";
+import React, { useState } from "react";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 // import axios from "axios";
 
 const ContactsEdit = props => {
+    console.log(props)
     const [contacts, setContacts] = useState({ first_name: "", last_name: "", phone: "" });
-        console.log(contacts)
-   
-    useEffect(() => {
-        console.log('hi');
-        const id = props.match.params.id;
-        const itemInArr = props.contacts.find(contact => `${contact.id}` === id);
-        if (itemInArr) setContacts(itemInArr);
-    }, [props.contacts, props.match.params.id]);
+
 
     const changeHandler = ev => {
         ev.persist();
-        
+
         let value = ev.target.value;
 
         setContacts({
@@ -23,20 +17,20 @@ const ContactsEdit = props => {
             [ev.target.name]: value
         });
 
-        
+
     };
 
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(contacts)
-        const user_id = localStorage.getItem('id')
+        console.log("inside handlesubmit", contacts)
+        const id = props.match.params.id;
         axiosWithAuth()
-            .put(`https://random-ark-generator.herokuapp.com/api/contacts/${user_id}`, contacts)
+            .put(`https://random-ark-generator.herokuapp.com/api/contacts/${id}`, contacts)
             .then(res => {
-                 console.log("contacts", res.data);
+                console.log("Inside Axios", res.data);
                 props.history.push('/contacts');
-                setContacts({ first_name: "", last_name: "", phone: "" });
+              
                 props.updatecontacts(res.data);
 
             })
@@ -44,15 +38,18 @@ const ContactsEdit = props => {
     };
 
     return (
-        <div>
-
+        <div className = "ContainerContact" >
+  <div className = "contact-wrap">
+    <h1> Contacts </h1> 
+    </div>
             <div>
-                <div>
+                <div className="editForm">
                     <h2>Update Contact</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="FormContactEdit">
                         <input
                             type="text"
-                            name="last_name"
+                            name="first_name"
+                            className="input"
                             placeholder="First Name"
                             onChange={changeHandler}
                             value={contacts.first_name}
@@ -60,6 +57,7 @@ const ContactsEdit = props => {
                         <input
                             type="text"
                             name="last_name"
+                            className = "input"
                             placeholder="last Name"
                             onChange={changeHandler}
                             value={contacts.last_name}
@@ -67,14 +65,15 @@ const ContactsEdit = props => {
                         <input
                             type="text"
                             name="phone"
+                            className = "input"
                             placeholder="phone"
                             onChange={changeHandler}
                             value={contacts.phone}
                         />
 
-                        <button type="submit">
+                        <button type="submit" className="btnEdit">
                             Update Contact
-          </button>
+                         </button>
                     </form>
                 </div>
 

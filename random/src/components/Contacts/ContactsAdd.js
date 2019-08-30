@@ -35,28 +35,28 @@ return (
     <h1> Contacts </h1> 
     </div> 
    <form className="contactsForm" onSubmit= {handleSubmit}>
-       <input type="text"
-       className="inputContact"
-       name="contactfirst"
-       placeholder="First Name"
-       onChange={changeHandler}
-       value={contact.first_name}
+   <input type="text"
+    className="inputContact"
+    name="first_name"
+    placeholder="First Name"
+    onChange={changeHandler}
+    value={contact.first_name}
    />
 
 <input type="text"
-       className="inputContact"
-       name="contactlast"
-       placeholder="Last Name"
-       onChange={changeHandler}
-       value={contact.last_name}
+    className="inputContact"
+    name="last_name"
+    placeholder="Last Name"
+    onChange={changeHandler}
+    value={contact.last_name}
    />
 
 <input type="text"
-       className="inputContact"
-       name="phone"
-       placeholder="Phone Number"
-       onChange={changeHandler}
-       value={contact.phone}
+    className="inputContact"
+    name="phone"
+    placeholder="Phone Number"
+    onChange={changeHandler}
+    value={contact.phone}
    />
 
 <button className="contactbtn" type="submit" >Add Contact </button> 
