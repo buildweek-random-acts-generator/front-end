@@ -73,8 +73,7 @@ This documentation will cover all of the data models and endpoints which can be 
 
 ```javascript
 {
-    "ark": "ark description",
-    "user_id": "password"
+    "ark": "ark description"
 }
 ```
 

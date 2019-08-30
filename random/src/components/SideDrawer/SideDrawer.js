@@ -5,10 +5,14 @@ import { logout } from "../../utils/Authentication";
 import './SideDrawer.css';
 
 const SideDrawer = props => {
-  // let drawerClasses = ['']
+  let drawerClasses = "side-drawer";
+  
+  if (props.show) {
+    drawerClasses = "side-drawer open";
+  }
 
   return (
-    <nav className='side-drawer'>
+    <nav className={drawerClasses}>
       <div className='toolbar-navigation-items'>
         <Link to="/welcome">Home</Link>
         <Link to="/login">Login</Link>
@@ -16,7 +20,7 @@ const SideDrawer = props => {
         <Link to="/ideas">Ideas</Link>
         <Link to="/contacts"> Contacts </Link>
         <Link to="/randomizer">Randomizer</Link>
-        <a onClick={logout}>Sign Out</a>
+        <Link onClick={logout}>Sign Out</Link>
       </div>
     </nav>
   );

@@ -1,31 +1,51 @@
 import React from "react";
 import './Random.css';
-import { Button, Icon, List } from 'semantic-ui-react';
-
-
-import RandomActsEdit from "./RandomActsEdit";
-// import RandomActsDelete from "./RandomActsDelete";
-
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { Link } from 'react-router-dom';
 
 
 export default function RandomActsCard(props) {
-  const { ark } = props.ark;
+  
+  const {ark} = props.act;
+  console.log("delete ID", props.act.id)
+
+  const handleSubmit = () => {
+
+    const id = props.act.id
+    axiosWithAuth().delete(`https://random-ark-generator.herokuapp.com/api/arks/${id}`)
+      .then(res => {
+
+        console.log(res.data);
+
+      })
+  }
+
 
   return (
-    <List divided verticalAlign="middle">
-      <List.Item>
+   
+        
+            < tr className = "listRandom" >
+               <td>  <h2>{ark}</h2></td>
+           
+            <td><div className="buttons" >
 
-        <List.Content floated="right">
-          <RandomActsEdit />
-          {/* <RandomActsDelete /> 
-        <Icon name='delete' />
-        <Icon name='edit' /> */}
-        </List.Content> 
-        <List.Content className="random-actz">{ark}</List.Content>
+            <button className="edit-button" type="submit">
+              <Link to={`/updateact/${props.act.id}`} className="update-button" act={props.act}>Edit</Link>
+            </button>
+            <button className="delete-button" type="submit" onClick={() => handleSubmit()}> 
+        Delete 
+        </button>
+ 
+            </div>
+</td>
+ </tr>
+   
+
+         
       
-      </List.Item>
-    </List>
   )
 }
+
+
 
 

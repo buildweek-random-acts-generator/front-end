@@ -1,83 +1,52 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import React, { useState} from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import { Button, Icon, List } from 'semantic-ui-react';
 
+const RandomActsEdit = props => {
 
-const initialAct = {
-    ark: '',
-};
+    console.log(props);
+    
+    const[acts, setActs] = useState({ark:""})
 
-const RandomActsEdit = ({ props, acts, updateActs }) => {
+    const changeHandler = ev => {
+      ev.persist();
 
-    console.log("acts data from Random Acts List", acts);
-    const [editing, setEditing] = useState(false);
-    const [actToEdit, setActToEdit] = useState(initialAct);
+      let value =ev.target.value;
 
-  console.log("actToEdit", actToEdit);
-
-    const editAct = ark => {
-      setEditing(true);
-      setActToEdit(ark);
+      setActs({
+        ...acts,
+        [ev.target.name]: value
+      });
     };
 
-    const saveEdit = event => {
-        // event.preventDefault();
-        axiosWithAuth()
-        .put(`https://random-ark-generator.herokuapp.com/api/arks/${actToEdit.id}`, actToEdit)
-        .then(response => {
-          console.log("saveEdit put request success", response.data)
-          setActToEdit(response.data);
-          // props.history.push("/ideas");
-        })
-        .catch(error => console.log(error.response));
+    const handleSubmit = e => {
+      e.preventDefault();
+      const id = props.match.params.id;
+      axiosWithAuth()
+          .put(`https://random-ark-generator.herokuapp.com/api/arks/${id}`, acts)
+          .then(res => {
+            props.history.push('/ideas');
+          })
     };
 
-    useEffect(() => {
-      saveEdit();
-    }, []);
-
-
-return (
-  <div className="acts-edit-wrap">
-  <ul>
-    {/* {acts.map(ark => ( */}
-      <div 
-        // key={ark.ark} 
-        onClick={() => editAct(`${actToEdit.id}`)}>
-                  {/* onClick={() => editAct(ark)}> */}
-
-          <div className="edit" onClick={() => saveEdit(`${actToEdit.id}`)}>
-          {/* <div className="edit" onClick={() => saveEdit(ark)}> */}
-
-          <Icon className="edit-icon" name="edit" />
-        </div>
-      </div>
-    {/* ))} */}
-  </ul>
-      {editing && (
-        <form onSubmit={saveEdit}>
-          <legend>edit act</legend>
-         
-            
-            <input
-              onChange={event =>
-                setActToEdit({ ...actToEdit, ark: event.target.value })
-              }
-              value={actToEdit.ark}
-            />
-        
-         
-          <div className="buttonz">
-            <button type="submit">save edit</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
-          </div>
+    return (
+      <div className="ActConatiner">
+        <h1>Edit Act</h1>
+        <form onSubmit={handleSubmit} className="FormActEdit">
+        <input
+                            type="text"
+                            name="ark"
+                            className="input"
+                            placeholder="edit act"
+                            onChange={changeHandler}
+                            value={acts.ark}
+                        />
+                        <button type="submit" className="btnEdit">Update Act</button>
         </form>
-      )} 
 
-    </div>
-  );
+      </div>
+    )
+
+  
 };
 export default RandomActsEdit;
 

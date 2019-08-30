@@ -1,115 +1,87 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import React, { useState } from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import { Button, Icon, List } from 'semantic-ui-react';
+// import axios from "axios";
+
+const ContactsEdit = props => {
+    console.log(props)
+    const [contacts, setContacts] = useState({ first_name: "", last_name: "", phone: "" });
 
 
-const initialContact = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone: '',
-};
+    const changeHandler = ev => {
+        ev.persist();
 
-const ContactsEdit = ({ props, contacts, updateContacts}) => {
+        let value = ev.target.value;
 
-    console.log("contacts data from Contacts List", contacts);
-    const [editing, setEditing] = useState(false);
-    const [contactToEdit, setContactToEdit] = useState(initialContact);
+        setContacts({
+            ...contacts,
+            [ev.target.name]: value
+        });
 
-  console.log("contactToEdit", contactToEdit);
 
-    const editContact = contact => {
-      setEditing(true);
-      setContactToEdit(contact);
     };
 
-    const saveEdit = event => {
-        // event.preventDefault();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log("inside handlesubmit", contacts)
+        const id = props.match.params.id;
         axiosWithAuth()
-        .put(`https://random-ark-generator.herokuapp.com/api/contacts/${contactToEdit.id}`, contactToEdit)
+            .put(`https://random-ark-generator.herokuapp.com/api/contacts/${id}`, contacts)
+            .then(res => {
+                console.log("Inside Axios", res.data);
+                props.history.push('/contacts');
+              
+                props.updatecontacts(res.data);
 
-        .then(response => {
-          console.log("saveEdit put request success for contacts", response.data)
-          setContactToEdit(response.data);
-          // props.history.push("/contacts");
-        })
-        .catch(error => console.log(error.response));
+            })
+            .catch(err => console.log(err.response));
     };
 
-    useEffect(() => {
-      saveEdit();
-    }, []);
-
-
-return (
-  <div className="contacts-edit-wrap">
-  <ul>
-    {contacts.map(contact => (
-      <div 
-        // key={contact.first_name} 
-        onClick={() => editContact(`${contactToEdit.id}`)}>
-                  {/* onClick={() => editContact(contact)}> */}
-
-          <div className="edit" onClick={() => saveEdit(`${contactToEdit.id}`)}>
-          {/* <div className="edit" onClick={() => saveEdit(contact)}> */}
-
-          <Icon className="edit-icon" name="edit" />
-        </div>
-      </div>
-    ))} 
-  </ul>
-      {editing && (
-        <form onSubmit={saveEdit}>
-          <legend>edit contact</legend>
-         {/* First name input  */}
-<input
-          type="text"
-          name="first_name"
-          onChange={event =>
-            setContactToEdit({ ...contactToEdit, first_name: event.target.value })}
-            placeholder="first name"
-            value={contactToEdit.first_name}
-        />
-         {/* Last name input  */}
-        <input
-          type="text"
-          name="last_name"
-          onChange={event =>
-            setContactToEdit({ ...contactToEdit, last_name: event.target.value })}
-            placeholder="last name"
-            value={contactToEdit.last_name}
-        />
- {/* Email input  */}
-<input
-          type="text"
-          name="email"
-          onChange={event =>
-            setContactToEdit({ ...contactToEdit, email: event.target.value })}
-            placeholder="email"
-            value={contactToEdit.email}
-        />
-
-         {/* Phone # input  */}
-<input
-          type="text"
-          name="phone"
-          onChange={event =>
-            setContactToEdit({ ...contactToEdit, phone: event.target.value })}
-            placeholder="phone #"
-            value={contactToEdit.phone}
-        />
-         
-          <div className="buttonz">
-            <button type="submit">save edit</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
-          </div>
-        </form>
-      )} 
-
+    return (
+        <div className = "ContainerContact" >
+  <div className = "contact-wrap">
+    <h1> Contacts </h1> 
     </div>
-  );
-};
-export default ContactsEdit;
+            <div>
+                <div className="editForm">
+                    <h2>Update Contact</h2>
+                    <form onSubmit={handleSubmit} className="FormContactEdit">
+                        <input
+                            type="text"
+                            name="first_name"
+                            className="input"
+                            placeholder="First Name"
+                            onChange={changeHandler}
+                            value={contacts.first_name}
+                        />
+                        <input
+                            type="text"
+                            name="last_name"
+                            className = "input"
+                            placeholder="last Name"
+                            onChange={changeHandler}
+                            value={contacts.last_name}
+                        />
+                        <input
+                            type="text"
+                            name="phone"
+                            className = "input"
+                            placeholder="phone"
+                            onChange={changeHandler}
+                            value={contacts.phone}
+                        />
 
+                        <button type="submit" className="btnEdit">
+                            Update Contact
+                         </button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    );
+}
+
+export default ContactsEdit;
